@@ -1,0 +1,46 @@
+.container_register {
+    margin-top: 1rem;
+}
+
+.link_to_register {
+    font-size: 15px;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.style_conten {
+    width: 50%;
+    height: auto;
+    background-color: #FFF;
+    border-radius: 40px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    padding: 30px 40px;
+}
+
+.form_dev {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-style {
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    border: 1px solid #555;
+}
+
+.btn-primary {
+    margin-top: 1rem;
+}
+
+.box_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.box_title i {
+    font-size: 42px;
+}

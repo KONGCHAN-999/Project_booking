@@ -1,0 +1,288 @@
+.box_doctor_content {
+    float: right;
+    margin: 0 2rem 2rem 2rem;
+}
+
+.doctor-card {
+    padding: 20px;
+}
+
+
+.button_add_new {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.button_add_new span i {
+    font-size: 1.5rem;
+}
+
+.box_group_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button_close {
+    background: transparent;
+    border: none;
+    font-size: 40px;
+}
+
+.button_close:hover {
+    color: #444;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Popup container */
+.box_form_addDoctor {
+    overflow-y: auto;
+    max-height: 98vh;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 30px 20px;
+    width: 800px;
+    margin: 0 auto;
+    position: fixed;
+    top: 50%;
+    left: 57%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+/* Custom scrollbar for WebKit browsers (Chrome, Safari, etc.) */
+.box_form_addDoctor::-webkit-scrollbar {
+    width: 8px;
+}
+
+.box_form_addDoctor::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.box_form_addDoctor::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.box_form_addDoctor::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.btn_submit_doctor {
+    width: 100%;
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.edit-view {
+    background-color: #65B891;
+}
+
+.btn_manage_infor {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn_delete {
+    background-color: #e74c3c;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.btn_update {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+/* Add these styles to your Doctor.css file */
+
+/* Detail Popup Styles */
+.popup_detail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup_detail_content {
+    background-color: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.detail_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #f8f9fa;
+    border-radius: 8px 8px 0 0;
+}
+
+.detail_header h2 {
+    margin: 0;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.detail_body {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.detail_item {
+    margin-bottom: 15px;
+}
+
+.detail_item img {
+    width: 100%;
+}
+
+.detail_item h3 {
+    margin: 0 0 8px 0;
+    font-size: 1rem;
+    color: #555;
+    font-weight: 600;
+}
+
+.detail_item p {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+    word-break: break-word;
+}
+
+.detail_text {
+    white-space: pre-line;
+    line-height: 1.5;
+}
+
+.detail_footer {
+    padding: 15px 20px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    background-color: #f8f9fa;
+    border-radius: 0 0 8px 8px;
+}
+
+.btn_edit {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.btn_edit:hover {
+    background-color: #3e8e41;
+}
+
+.btn_close {
+    background-color: #f1f1f1;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.btn_close:hover {
+    background-color: #e1e1e1;
+}
+
+.form-group textarea {
+    width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .detail_body {
+        grid-template-columns: 1fr;
+    }
+
+    .popup_detail_content {
+        width: 95%;
+        max-height: 80vh;
+    }
+}

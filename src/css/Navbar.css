@@ -1,0 +1,199 @@
+.navbar-container {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 8vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+.navbar-content {
+
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.title-web img {
+  top: -1.7rem;
+  width: 120px;
+  position: absolute;
+}
+
+.navbar-links {
+  display: flex;
+  margin-top: 10px;
+  gap: 3rem;
+}
+
+.nav-link {
+  font-size: 1.1em;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.nav-link:hover {
+  color: #666;
+}
+
+.popup_account {
+  width: 25%;
+  padding: 10px;
+}
+
+.popup_account_content button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.popup_account_content button:hover {
+  background-color: #0061c8;
+  color: white;
+}
+
+.navbar-links .nav_login {
+  background-color: #43ba7f;
+  color: #fff;
+  padding: 10px 50px;
+  border-radius: 30px;
+  margin-top: -1px;
+}
+
+.navbar-links .nav_login:hover {
+  color: #fff;
+}
+
+
+/* Add these styles to your NavBar.css file */
+
+/* Account link styling */
+.box_loginAccount {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
+}
+
+/* Profile thumbnail in navbar */
+.profile-thumbnail {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Profile initial for users without image */
+.profile-initial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -15px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Popup styling improvements */
+.popup_account {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.popup_account_content {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 250px;
+}
+
+/* User info in popup */
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.profile-image {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.profile-initial-large {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Popup links */
+.popup-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.popup-link {
+  text-decoration: none;
+  color: #333;
+  padding: 8px 0;
+  display: block;
+}
+
+.popup-link:hover {
+  color: #007bff;
+}
+
+.logout-button {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  margin-top: 5px;
+  transition: background-color 0.2s;
+}
+
+.logout-button:hover {
+  background-color: #e9ecef;
+}

@@ -1,0 +1,417 @@
+.doctor-detail-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+
+.doctor-detail-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.doctor-detail-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0 auto;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.back-button:hover {
+    color: #1d4ed8;
+}
+
+.doctor-detail-content {
+    display: flex;
+    gap: 2rem;
+}
+
+.doctor-detail-sidebar {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+.doctor-detail-main {
+    flex: 1;
+}
+
+.doctor-profile-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.doctor-detail-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+    border: 4px solid #f0f9ff;
+}
+
+.doctor-detail-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0.5rem 0;
+}
+
+.doctor-detail-specialty {
+    color: #3b82f6;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.doctor-detail-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.75rem 0;
+    color: #666;
+}
+
+.star-icon {
+    color: #f59e0b;
+    margin-right: 0.25rem;
+}
+
+.rating-score {
+    font-weight: 600;
+    margin-right: 0.25rem;
+}
+
+.doctor-contact-info {
+    margin: 1.5rem 0;
+    text-align: left;
+}
+
+.contact-item {
+    display: flex;
+    margin-bottom: 0.5rem;
+}
+
+.contact-label {
+    font-weight: 500;
+    width: 60px;
+    flex-shrink: 0;
+}
+
+.contact-value {
+    color: #666;
+}
+
+.book-appointment-btn {
+    display: block;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+}
+
+.book-appointment-btn:hover {
+    background-color: #1d4ed8;
+}
+
+.doctor-tabs {
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 1.5rem;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+}
+
+.tab-button.active {
+    color: #3b82f6;
+}
+
+.tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #3b82f6;
+}
+
+.tab-content {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.about-tab h3,
+.education-tab h3,
+.experience-tab h3,
+.schedule-tab h3,
+.reviews-tab h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.about-tab p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.specializations h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.specializations ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.specializations li {
+    background-color: #f0f9ff;
+    color: #3b82f6;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.education-timeline,
+.experience-timeline {
+    margin-top: 1.5rem;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.timeline-marker {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-color: #3b82f6;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+}
+
+.timeline-marker::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: #e5e7eb;
+    top: 20px;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline-item:last-child .timeline-marker::before {
+    display: none;
+}
+
+.timeline-content h4 {
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+}
+
+.timeline-institution {
+    color: #666;
+    margin: 0 0 0.25rem;
+}
+
+.timeline-year {
+    color: #888;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.schedule-table {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+}
+
+.schedule-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.schedule-table th {
+    background-color: #f9fafb;
+    font-weight: 600;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.schedule-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    color: #555;
+}
+
+.day-column {
+    font-weight: 500;
+}
+
+.schedule-note {
+    background-color: #f0f9ff;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+}
+
+.schedule-note p {
+    margin: 0;
+    color: #1e40af;
+    font-size: 0.9rem;
+}
+
+.reviews-summary {
+    background-color: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.average-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rating-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.rating-stars {
+    color: #f59e0b;
+    font-size: 1.25rem;
+    margin: 0.25rem 0;
+}
+
+.rating-count {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.review-item {
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 1rem;
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+}
+
+.reviewer-name {
+    font-weight: 500;
+}
+
+.review-date {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.review-rating {
+    color: #f59e0b;
+    margin-bottom: 0.5rem;
+}
+
+.review-comment {
+    color: #555;
+    line-height: 1.5;
+}
+
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    font-size: 1.25rem;
+    color: #3b82f6;
+}
+
+.doctor-not-found {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.back-to-doctors {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+    .doctor-detail-content {
+        flex-direction: column;
+    }
+
+    .doctor-detail-sidebar {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .doctor-tabs {
+        flex-wrap: wrap;
+    }
+
+    .tab-button {
+        flex: 1 0 auto;
+        text-align: center;
+    }
+}

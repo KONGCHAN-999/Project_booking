@@ -1,0 +1,105 @@
+.services_content_box {
+    text-align: center;
+    padding: 20px;
+}
+
+.title_services {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.services_content_box h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.carousel_container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.card_services_box {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: max-content;
+}
+
+.card_services {
+    flex: 0 0 300px;
+    /* Fixed width for each card */
+    margin: 10px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card_icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card_icon img {
+    width: 50px;
+    height: 50px;
+}
+
+.card_services h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card_services p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.btn_learn_more {
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.carousel_controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.carousel_arrow {
+    background: #fff;
+    border: 2px solid #4CAF50;
+    color: #4CAF50;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+.carousel_arrow:hover {
+    background: #4CAF50;
+    color: #fff;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .card_services {
+        flex: 0 0 250px;
+    }
+}
