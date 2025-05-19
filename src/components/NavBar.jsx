@@ -9,7 +9,6 @@ import { onAuthStateChanged, signOut } from 'firebase/auth';
 function NavBar() {
   const [user, setUser] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const handlePopupAccount = () => {
@@ -23,7 +22,6 @@ function NavBar() {
   useEffect(() => {
     // Listen for authentication state changes
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      setLoading(true);
       if (currentUser) {
         // Fetch user data from Firestore
         const userDoc = doc(db, 'users', currentUser.uid);
@@ -37,7 +35,6 @@ function NavBar() {
       } else {
         setUser(null); // No user is logged in
       }
-      setLoading(false);
     });
 
     // Cleanup subscription on unmount
@@ -83,35 +80,31 @@ function NavBar() {
           <Link to="/" className="nav-link">Home</Link>
           <Link to="/doctor" className="nav-link">Doctor</Link>
 
-          {!loading && (
+          {user ? (
             <>
-              {user ? (
-                <>
-                  <Link to="/booking" className="nav-link">My Booking</Link>
-                  <div className="nav-link account-link" onClick={handlePopupAccount}>
-                    <div className="box_loginAccount">
-                      <p>Account</p>
-                      {user.profilePicture ? (
-                        <img
-                          src={user.profilePicture}
-                          alt="Profile"
-                          className="profile-thumbnail"
-                        />
-                      ) : (
-                        <span className="profile-initial">
-                          {user.email.charAt(0).toUpperCase()}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  <Link to="/form" className="nav-link nav_login">Appointment</Link>
-                </>
-              ) : (
-                <>
-                  <Link to="/login" className="nav-link">Login</Link>
-                  <Link to="/login" className="nav-link nav_login">Appointment</Link>
-                </>
-              )}
+              <Link to="/booking" className="nav-link">My Booking</Link>
+              <div className="nav-link account-link" onClick={handlePopupAccount}>
+                <div className="box_loginAccount">
+                  <p>Account</p>
+                  {user.profilePicture ? (
+                    <img
+                      src={user.profilePicture}
+                      alt="Profile"
+                      className="profile-thumbnail"
+                    />
+                  ) : (
+                    <span className="profile-initial">
+                      {user.email.charAt(0).toUpperCase()}
+                    </span>
+                  )}
+                </div>
+              </div>
+              <Link to="/form" className="nav-link nav_login">Appointment</Link>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="nav-link">Login</Link>
+              <Link to="/login" className="nav-link nav_login">Appointment</Link>
             </>
           )}
         </div>

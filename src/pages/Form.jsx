@@ -160,12 +160,10 @@ function Form() {
         e.preventDefault();
         setError('');
         setSuccess('');
-        setLoading(true); // Start loading
 
         // Validate inputs
         if (!form.name || !form.phone || !form.doctor || !form.date || !form.time || !form.case) {
             setError('Please fill in all required fields.');
-            setLoading(false);
             return;
         }
 
@@ -173,7 +171,6 @@ function Form() {
         const user = auth.currentUser;
         if (!user) {
             setError('You must be logged in to make a booking.');
-            setLoading(false);
             return;
         }
 
@@ -215,8 +212,6 @@ function Form() {
         } catch (error) {
             setError('Error adding booking. Please try again.');
             console.error('Error adding booking:', error);
-        } finally {
-            setLoading(false); // Stop loading regardless of outcome
         }
     };
 

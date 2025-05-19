@@ -97,6 +97,10 @@
     color: #fff;
 }
 
+.loading-container{
+    text-align: center;
+}
+
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .card_services {

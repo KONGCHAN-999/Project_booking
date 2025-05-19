@@ -56,7 +56,6 @@ function Profile() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true);
 
         try {
             // Update user document in Firestore
@@ -81,9 +80,7 @@ function Profile() {
         } catch (error) {
             console.error('Error updating profile:', error);
             setMessage({ text: 'Error updating profile. Please try again.', type: 'error' });
-        } finally {
-            setLoading(false);
-        }
+        } 
     };
 
     return (
@@ -195,6 +192,14 @@ function Profile() {
                                         onChange={handleInputChange}
                                         placeholder="Enter your address"
                                     ></textarea>
+                                </div>
+
+                                <div className="form_group">
+                                    <p className='change_password'>Change password</p>
+                                </div>
+
+                                <div className="form_group">
+                                    <p className='change_delete'>Delete Account</p>
                                 </div>
 
                                 <div className="form_actions">

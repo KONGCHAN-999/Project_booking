@@ -13,25 +13,30 @@ function AddUser() {
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [password, setPassword] = useState('');
-  const role = 'user';
+  const [role, setRole] = useState('user');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     setError('');
+    setLoading(true);
 
     // Validate inputs
     if (!fullName || !age || !gender || !phone || !email || !address || !password) {
       setError('Please fill in all fields.');
+      setLoading(false);
       return;
     }
     if (!role) {
       setError('Please select a role.');
+      setLoading(false);
       return;
     }
     if (isNaN(age) || age <= 0) {
       setError('Please enter a valid age.');
+      setLoading(false);
       return;
     }
 
@@ -50,10 +55,11 @@ function AddUser() {
           email: user.email,
           address,
           role,
+          createdAt: new Date().toISOString()
         });
       }
       console.log('User Registered Successfully!');
-      navigate('/home');
+      navigate('/dctoradmin');
 
     } catch (error) {
       // Customize error messages for common cases
@@ -71,6 +77,8 @@ function AddUser() {
           setError(error.message);
       }
       console.error('Registration error:', error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -79,11 +87,15 @@ function AddUser() {
       <div className="container_register d-flex justify-content-center align-items-center min-vh-100">
         <div className="w-50 style_conten">
           <div className="box_title">
-            <h2 className="">Register</h2>
-            <i class='bx bx-x'></i>
+            <h2>Add User</h2>
+            <Link to="/dctoradmin">
+              <i className='bx bx-x'></i>
+            </Link>
           </div>
-          {error && <div className="alert alert-danger">{error}</div>}
-          <form onSubmit={handleRegister}>
+          
+          {error && <div className="alert alert-danger" role="alert">{error}</div>}
+          
+          <form onSubmit={handleRegister} noValidate>
             <div className="mb-3">
               <label htmlFor="fullName" className="form-label">Full Name</label>
               <input
@@ -93,10 +105,12 @@ function AddUser() {
                 name="fullName"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                placeholder="Enter your full name"
+                placeholder="Enter full name"
                 required
+                disabled={loading}
               />
             </div>
+            
             <div className="mb-3">
               <label htmlFor="age" className="form-label">Age</label>
               <input
@@ -106,10 +120,13 @@ function AddUser() {
                 name="age"
                 value={age}
                 onChange={(e) => setAge(e.target.value)}
-                placeholder="Enter your age"
+                placeholder="Enter age"
                 required
+                min="1"
+                disabled={loading}
               />
             </div>
+            
             <div className="mb-3">
               <label htmlFor="gender" className="form-label">Gender</label>
               <select
@@ -119,6 +136,7 @@ function AddUser() {
                 value={gender}
                 onChange={(e) => setGender(e.target.value)}
                 required
+                disabled={loading}
               >
                 <option value="">Select gender</option>
                 <option value="Male">Male</option>
@@ -126,6 +144,23 @@ function AddUser() {
                 <option value="Other">Other</option>
               </select>
             </div>
+            
+            <div className="mb-3">
+              <label htmlFor="role" className="form-label">Role</label>
+              <select
+                className="form-control"
+                id="role"
+                name="role"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                required
+                disabled={loading}
+              >
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
+            
             <div className="mb-3">
               <label htmlFor="phone" className="form-label">Phone</label>
               <input
@@ -135,10 +170,12 @@ function AddUser() {
                 name="phone"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                placeholder="Enter your phone number"
+                placeholder="Enter phone number"
                 required
+                disabled={loading}
               />
             </div>
+            
             <div className="mb-3">
               <label htmlFor="email" className="form-label">Email address</label>
               <input
@@ -148,10 +185,12 @@ function AddUser() {
                 name="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
+                placeholder="Enter email"
                 required
+                disabled={loading}
               />
             </div>
+            
             <div className="mb-3">
               <label htmlFor="address" className="form-label">Address</label>
               <input
@@ -161,10 +200,12 @@ function AddUser() {
                 name="address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                placeholder="Enter your address"
+                placeholder="Enter address"
                 required
+                disabled={loading}
               />
             </div>
+            
             <div className="mb-3">
               <label htmlFor="password" className="form-label">Password</label>
               <input
@@ -174,17 +215,20 @@ function AddUser() {
                 name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
+                placeholder="Enter password"
                 required
+                disabled={loading}
               />
             </div>
-            <button type="submit" className="btn btn-primary w-100">
-              Register
+            
+            <button 
+              type="submit" 
+              className="btn btn-primary w-100"
+              disabled={loading}
+            >
+              {loading ? 'Processing...' : 'Add User'}
             </button>
           </form>
-          <Link to="/login" className="link_to_register mt-3 d-block text-center">
-            Already have an account? Login
-          </Link>
         </div>
       </div>
     </>

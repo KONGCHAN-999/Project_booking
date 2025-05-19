@@ -4,6 +4,7 @@ import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from 'firebase
 import Dashboard from './Dashboard';
 import './css/Doctor.css';
 import profile01 from '../../public/images/profile01.avif'
+import { LuPencil } from "react-icons/lu";
 
 function Doctor() {
     const [doctors, setDoctors] = useState({
@@ -21,7 +22,6 @@ function Doctor() {
     const [editId, setEditId] = useState(null);
     const [showPopup, setShowPopup] = useState(false);
     const [selectedDoctorId, setSelectedDoctorId] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
     const [showDetailPopup, setShowDetailPopup] = useState(false);
     const [selectedDoctor, setSelectedDoctor] = useState(null);
     const doctorData = collection(db, 'doctors');
@@ -29,7 +29,6 @@ function Doctor() {
     // Fetch doctor data from Firestore
     useEffect(() => {
         const fetchDoctorData = async () => {
-            setIsLoading(true);
             try {
                 const querySnapshot = await getDocs(doctorData);
                 const newDoctorData = querySnapshot.docs.map((doc) => ({
@@ -39,8 +38,6 @@ function Doctor() {
                 setGetDataDoctor(newDoctorData);
             } catch (error) {
                 console.error('Error fetching doctors:', error);
-            } finally {
-                setIsLoading(false);
             }
         };
         fetchDoctorData();
@@ -203,6 +200,7 @@ function Doctor() {
                                                     onClick={() => handleUpdate(doctor)}
                                                     aria-label={`Edit ${doctor.fullName}`}
                                                 >
+                                                    <LuPencil />
                                                     Edit
                                                 </button>
                                                 <button
@@ -210,6 +208,7 @@ function Doctor() {
                                                     onClick={() => openPopup(doctor.id)}
                                                     aria-label={`Delete ${doctor.fullName}`}
                                                 >
+                                                    <i className="bx bx-trash"></i>
                                                     Delete
                                                 </button>
                                                 <button
@@ -217,7 +216,8 @@ function Doctor() {
                                                     onClick={() => handleDetail(doctor)}
                                                     aria-label={`View ${doctor.fullName}`}
                                                 >
-                                                    Detail
+                                                    <i className="bx bx-show"></i>
+                                                    View
                                                 </button>
                                             </div>
                                         </td>

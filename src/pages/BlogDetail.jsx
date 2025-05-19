@@ -18,7 +18,6 @@ export default function BlogDetail() {
         // Function to fetch the specific blog from Firebase
         const fetchBlog = async () => {
             try {
-                setLoading(true);
                 const blogRef = doc(db, 'blogs', blogId);
                 const blogSnap = await getDoc(blogRef);
 
@@ -30,27 +29,25 @@ export default function BlogDetail() {
                 } else {
                     setError("Blog post not found");
                 }
-                setLoading(false);
             } catch (err) {
                 console.error("Error fetching blog:", err);
                 setError("Failed to load blog. Please try again later.");
-                setLoading(false);
             }
         };
 
         fetchBlog();
     }, [blogId]);
 
-    if (loading) {
-        return (
-            <div className="blog-detail-container">
-                <div className="loading-indicator">
-                    <div className="spinner"></div>
-                    <p>Loading blog post...</p>
-                </div>
-            </div>
-        );
-    }
+    // if (loading) {
+    //     return (
+    //         <div className="blog-detail-container">
+    //             <div className="loading-indicator">
+    //                 <div className="spinner"></div>
+    //                 <p>Loading blog post...</p>
+    //             </div>
+    //         </div>
+    //     );
+    // }
 
     if (error) {
         return (

@@ -25,24 +25,11 @@ function DoctorDetail() {
                 }
             } catch (error) {
                 console.error('Error fetching doctor details:', error);
-            } finally {
-                setLoading(false);
-            }
+            } 
         };
 
         fetchDoctorDetail();
     }, [id]);
-
-    if (loading) {
-        return (
-            <>
-                <NavBar />
-                <div className="doctor-detail-container">
-                    <div className="loading-spinner">Loading...</div>
-                </div>
-            </>
-        );
-    }
 
     if (!doctor) {
         return (

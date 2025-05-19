@@ -269,7 +269,7 @@ function Home() {
                                         <div className="doctor-specialty">{doctor.specialty}</div>
                                         <h3 className="doctor-name">{doctor.fullName}</h3>
                                         <p>{doctor.contact}</p>
-                                        <a href="#" className="book-btn">
+                                        <a href="/form" className="book-btn">
                                             Book Appointment
                                             <span className="arrow-icon">→</span>
                                         </a>

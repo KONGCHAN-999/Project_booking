@@ -13,12 +13,13 @@ import Booking from './pages/Booking';
 import Form from './pages/Form';
 import Profile from './pages/Profile';
 import Blog from './pages/Blog';
+import BlogDetail from './pages/BlogDetail';
 
 import DoctorAdmin from './admin/Doctor';
 import ManageUser from './admin/ManageUser';
 import BookingAdmin from './admin/Booking';
 import BlogAdmin from './admin/Blogs';
-import BlogDetail from './pages/BlogDetail';
+import AddUser from './admin/AddUser';
 // Add any other components you need
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
         <Route path="/manageuser" element={<ManageUser />} />
         <Route path="/bookingadmin" element={<BookingAdmin />} />
         <Route path="/blogAdmin" element={<BlogAdmin />} />
+        <Route path="/addUser" element={<AddUser />} />
       </Route>
 
       {/* Fallback route - redirect to home */}

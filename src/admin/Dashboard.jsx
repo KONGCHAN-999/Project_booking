@@ -48,7 +48,6 @@ function Dashboard() {
   // Handle actual logout after confirmation
   const handleLogout = async () => {
     setError('');
-    setLoading(true);
     try {
       await signOut(auth);
       console.log('User logged out successfully');
@@ -57,7 +56,6 @@ function Dashboard() {
       console.error('Error logging out:', error.message);
       setError('Failed to log out. Please try again.');
     } finally {
-      setLoading(false);
       setShowLogoutConfirm(false);
     }
   };

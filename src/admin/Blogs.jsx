@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { db } from '../data/firebase';
-import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import axios from 'axios';
 import Dashboard from './Dashboard';
 import './css/Blogs.css';
+import { LuPencil } from "react-icons/lu";
 
 function Blogs() {
     const [blogs, setBlogs] = useState({
@@ -15,15 +15,15 @@ function Blogs() {
         isPublished: false,
         imageUrl: ''
     });
+
     const [getBlogData, setGetBlogData] = useState([]);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [editId, setEditId] = useState(null);
     const [showPopup, setShowPopup] = useState(false);
     const [selectedBlogId, setSelectedBlogId] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
     const [showDetailPopup, setShowDetailPopup] = useState(false);
     const [selectedBlog, setSelectedBlog] = useState(null);
-    const blogData = collection(db, 'blogs');
+    const API_URL = 'http://localhost:5000/api/blogs';
 
     // Format date to YYYY-MM-DD for input fields
     const formatDateForInput = (dateString) => {
@@ -43,25 +43,18 @@ function Blogs() {
         });
     };
 
-    // Fetch blog data from Firestore
+    // Fetch blog data from MongoDB via backend API
     useEffect(() => {
         const fetchBlogData = async () => {
-            setIsLoading(true);
             try {
-                const querySnapshot = await getDocs(blogData);
-                const newBlogData = querySnapshot.docs.map((doc) => ({
-                    id: doc.id,
-                    ...doc.data(),
-                }));
-                setGetBlogData(newBlogData);
+                const response = await axios.get(API_URL);
+                setGetBlogData(response.data);
             } catch (error) {
                 console.error('Error fetching blogs:', error);
-            } finally {
-                setIsLoading(false);
             }
         };
         fetchBlogData();
-    }, [blogData]);
+    }, []);
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
@@ -94,21 +87,20 @@ function Blogs() {
 
             if (editId) {
                 // Update existing blog
-                const blogRef = doc(db, 'blogs', editId);
-                await updateDoc(blogRef, blogToSave);
+                const response = await axios.put(`${API_URL}/${editId}`, blogToSave);
                 alert('Blog updated successfully!');
                 setGetBlogData((prev) =>
                     prev.map((blog) =>
-                        blog.id === editId ? { id: editId, ...blogToSave } : blog
+                        blog._id === editId ? { ...response.data, id: editId } : blog
                     )
                 );
             } else {
                 // Add new blog
-                const newDoc = await addDoc(blogData, blogToSave);
+                const response = await axios.post(API_URL, blogToSave);
                 alert('Blog added successfully!');
                 setGetBlogData((prev) => [
                     ...prev,
-                    { id: newDoc.id, ...blogToSave },
+                    { ...response.data, id: response.data._id },
                 ]);
             }
             toggleSidebar();
@@ -138,8 +130,8 @@ function Blogs() {
 
     const handleDelete = async (id) => {
         try {
-            await deleteDoc(doc(db, 'blogs', id));
-            setGetBlogData((prev) => prev.filter((blog) => blog.id !== id));
+            await axios.delete(`${API_URL}/${id}`);
+            setGetBlogData((prev) => prev.filter((blog) => blog._id !== id));
             alert('Blog deleted successfully!');
         } catch (error) {
             console.error('Error deleting blog:', error);
@@ -155,7 +147,7 @@ function Blogs() {
     };
 
     const handleUpdate = (blog) => {
-        setEditId(blog.id);
+        setEditId(blog._id);
         setBlogs({
             title: blog.title || '',
             author: blog.author || '',
@@ -216,7 +208,7 @@ function Blogs() {
                                 </tr>
                             ) : (
                                 getBlogData.map((blog) => (
-                                    <tr key={blog.id}>
+                                    <tr key={blog._id}>
                                         <td>{truncateText(blog.title)}</td>
                                         <td>{blog.author}</td>
                                         <td>{blog.category || 'Uncategorized'}</td>
@@ -233,13 +225,15 @@ function Blogs() {
                                                     onClick={() => handleUpdate(blog)}
                                                     aria-label={`Edit ${blog.title}`}
                                                 >
+                                                    <LuPencil />
                                                     Edit
                                                 </button>
                                                 <button
                                                     className="delete-button"
-                                                    onClick={() => openPopup(blog.id)}
+                                                    onClick={() => openPopup(blog._id)}
                                                     aria-label={`Delete ${blog.title}`}
                                                 >
+                                                    <i className="bx bx-trash"></i>
                                                     Delete
                                                 </button>
                                                 <button
@@ -247,6 +241,7 @@ function Blogs() {
                                                     onClick={() => handleDetail(blog)}
                                                     aria-label={`View ${blog.title}`}
                                                 >
+                                                    <i className="bx bx-show"></i>
                                                     View
                                                 </button>
                                             </div>

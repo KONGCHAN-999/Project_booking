@@ -92,13 +92,6 @@ function Booking() {
     closePopups();
   };
 
-  // Redirect to login if not authenticated
-  useEffect(() => {
-    if (!user) {
-      setError('Please log in to view your bookings.');
-    }
-  }, user);
-
   // Helper function to get status class
   const getStatusClass = (status) => {
     switch (status?.toLowerCase()) {
